@@ -30,7 +30,7 @@ def dataframe():
     data['Action'] = data['Action'].apply(lambda x: [o for o in x.split(',') if len(o)])
     data.drop(['Flag1', 'Flag2', 'Flag3', 'Flag4', 'Flag5', 'Flag6'], axis=1, inplace=True)
     data["confirmdate"] = [d.date() for d in data["Auditing Time"]]
-    data["todaydate"] = datetime.datetime(2023, 3, 5)
+    data["todaydate"] = datetime.datetime(2023, 3, 5).date()
     data.loc[(data["Print status"] == "Unprinted") & (data["Application Status"] == "Reviewed") & (data["confirmdate"].notna()) & ((data["todaydate"] - data["confirmdate"]).dt.days == 1), "unprintedold"] = True
     data.loc[(data["Print status"] == "Unprinted") & (data["Application Status"] == "Reviewed") & (data["confirmdate"].notna()) & ((data["todaydate"] - data["confirmdate"]).dt.days > 1), "unprintedolder"] = True
     data.loc[(data["Print status"] == "Unprinted") & (data["Application Status"] == "Reviewed") & (data["confirmdate"].notna()) & ((data["todaydate"] - data["confirmdate"]).dt.days == 0), "unprintednew"] = True
