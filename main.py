@@ -49,7 +49,7 @@ def dataframe():
             unpickup[i] = unpickup[i].astype(int)
         except (TypeError, ValueError):
             pass
-    unpickup['Date'] = unpickup['Date'].dt.date
+    unpickupdf['Date'] = pd.to_datetime(unpickupdf['Date']).dt.date
     on_time = pd.read_excel("Agency (G).xlsx", sheet_name="on-time")
     on_time[[col for col in on_time.columns if 'Amount' in col]] = on_time[[col for col in on_time.columns if 'Amount' in col]].astype(float)
     on_time = on_time.sort_values(by="Date", ascending=False)
