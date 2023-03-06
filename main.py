@@ -49,7 +49,7 @@ def dataframe():
             unpickup[i] = unpickup[i].astype(int)
         except (TypeError, ValueError):
             pass
-
+    unpickup['Date'] = unpickup['Date'].dt.date
     on_time = pd.read_excel("Agency (G).xlsx", sheet_name="on-time")
     on_time[[col for col in on_time.columns if 'Amount' in col]] = on_time[[col for col in on_time.columns if 'Amount' in col]].astype(float)
     on_time = on_time.sort_values(by="Date", ascending=False)
@@ -59,6 +59,7 @@ def dataframe():
 df, lastupdated, ontimedf, unpickupdf = dataframe()
 tabb1, tabb2 = st.tabs(["Unsigned Shipments", "Couriers Monitoring"])
 
+st.write(unpickupdf)
 with tabb1:
     # Sidebar
     st.sidebar.title("Filter Options")
