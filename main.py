@@ -59,7 +59,6 @@ def dataframe():
 df, lastupdated, ontimedf, unpickupdf = dataframe()
 tabb1, tabb2 = st.tabs(["Unsigned Shipments", "Couriers Monitoring"])
 
-st.write(unpickupdf)
 with tabb1:
     # Sidebar
     st.sidebar.title("Filter Options")
