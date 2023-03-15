@@ -36,7 +36,6 @@ def dataframe():
     data.loc[(data["Print status"] == "Unprinted") & (data["Application Status"] == "Reviewed") & (data["confirmdate"].notna()) & ((data["todaydate"] - data["confirmdate"]).dt.days == 0), "unprintednew"] = True
     data.loc[data["All Abnormal Sequence (Old to New)"].isna(), "All Abnormal Sequence (Old to New)"] = 0
     data["printdate"] = [d.date() for d in data["Print Time"]]
-    data["todaydate"] = datetime.datetime.today().date()
     data.loc[data['printdate'].notna(), "todayminusprint"] = (data.loc[(data['printdate'].notna()), "todaydate"] - data.loc[(data['printdate'].notna()), "printdate"]).dt.days
     data.loc[data['todayminusprint'] == 0, "pnmnew"] = True
     data.loc[data['todayminusprint'] == 1, "pnmold"] = True
