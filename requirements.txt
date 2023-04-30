@@ -1,5 +1,5 @@
-plotly
-pandas
+plotly==5.14.0
+pandas<=1.5.3
 openpyxl
 streamlit-aggrid
 gspread
