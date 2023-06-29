@@ -11,6 +11,13 @@ import os
 
 st.set_page_config(page_title="Quality Control", page_icon=":bar_chart:", layout="wide")
 
+hide_menu_style = """
+        <style>
+        #MainMenu {visibility: hidden;}
+        </style>
+        """
+st.markdown(hide_menu_style, unsafe_allow_html=True)
+
 @st.cache(allow_output_mutation=True)
 def dataframe():
     data = pd.read_excel("Agency (G).xlsx", sheet_name="Raw_Data")
