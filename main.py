@@ -787,7 +787,7 @@ with tabb2:
                 last_activity = signscandf.groupby('Delivery or pickup Courier')["Scan time"].agg('max').reset_index().sort_values(by="Scan time", ascending=False).reset_index().rename(columns={"Scan time": "Last Activity Time"}).drop(["index"],
                                                                                                                                                                                                                                            axis=1)
                 fs = fs.merge(last_activity, how="left")
-                fs["Inactive For .. (Minutes)"] = round(((datetime.datetime.now() - fs["Last Activity Time"]) / np.timedelta64(1, 'm')) + 120, )
+                fs["Inactive For .. (Minutes)"] = round(((datetime.datetime.now() - fs["Last Activity Time"]) / np.timedelta64(1, 'm')) + 180, )
                 fs["Scan time"] = fs["Last Activity Time"]
                 fs = fs.merge(signscandf[["Delivery or pickup Courier", "Scan time", "Waybill NO.", "Scan Type", "Branch latitude and longitude"]], on=["Delivery or pickup Courier", "Scan time"], how="left").drop_duplicates(
                     subset="Delivery or pickup Courier")
@@ -824,7 +824,7 @@ with tabb2:
                 last_activity = signscandf.groupby('Delivery or pickup Courier')["Scan time"].agg('max').reset_index().sort_values(by="Scan time", ascending=False).reset_index().rename(columns={"Scan time": "Last Activity Time"}).drop(["index"],
                                                                                                                                                                                                                                            axis=1)
                 fs = fs.merge(last_activity, how="left")
-                fs["Inactive For .. (Minutes)"] = round(((datetime.datetime.now() - fs["Last Activity Time"]) / np.timedelta64(1, 'm')) + 120, )
+                fs["Inactive For .. (Minutes)"] = round(((datetime.datetime.now() - fs["Last Activity Time"]) / np.timedelta64(1, 'm')) + 180, )
                 fs["Scan time"] = fs["Last Activity Time"]
                 fs = fs.merge(signscandf[["Delivery or pickup Courier", "Scan time", "Waybill NO.", "Scan Type", "Branch latitude and longitude"]], on=["Delivery or pickup Courier", "Scan time"], how="left").drop_duplicates(
                     subset="Delivery or pickup Courier")
