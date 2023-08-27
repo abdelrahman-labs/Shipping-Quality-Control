@@ -105,7 +105,7 @@ with tabb1:
         pass
 
     with title:
-        st.title(":bar_chart: Huawei")
+        st.title(":bar_chart: Quality Control")
         st.write(f"Last updated: {lastupdated}")
         if st.button("Hide All"):
             st.empty()
